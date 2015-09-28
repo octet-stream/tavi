@@ -61,6 +61,6 @@ Tavi will create project with this structure:
 	./foo/views/pro.jade
 
 ## Other information about repository
-The source repository:
+The source repository: [https://github.com/octet-stream/tavi.git](https://github.com/octet-stream/tavi.git)
 
-To suggest a feature or report a bug:
+To suggest a feature or report a bug: [https://github.com/octet-stream/tavi/issues](https://github.com/octet-stream/tavi/issues)
