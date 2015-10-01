@@ -1,4 +1,4 @@
-tavi = require './tavi'
+tavi = new (require './tavi')
 optparser = require './optparser'
 parser = require './parser'
 
@@ -8,8 +8,8 @@ SWITCHERS = [
 	['-h', '--help', 'Display this help message'],
 	['-v', '--version', 'Display current Tavi version'],
 	['-c', '--create', 'Create project with given pattern'],
+	['-s', '--save', 'Save new pattern']
 	# ['-t', '--tree', 'Show tree for given pattern'],
-	# ['-s', '--save', 'Add new pattern and save one to Tavi storage']
 	# ['-d', '--dependencies', 'You can provide dependencies for your project (only for npm)']
 ]
 
@@ -23,7 +23,12 @@ exports.run = ->
 	options = do parseArgs
 	return do usage if options == null
 	return do version if 'version' of options
-	return create parser.resolve options.create.toString() if 'create' of options
+	if 'create' of options
+		# tavi.create parser.resolve options.create.toString()
+		savedPatterns = require tavi.PATTERNS_FILE_PATH
+		tavi.create if options.create of savedPatterns then savedPatterns[options.create] else parser.resolve options.create.toString()
+		return
+	return tavi.save options.save[0], parser.resolve options.save[1].toString() if 'save' of options
 	return tavi.writeLine (new optparser.OptionParser(SWITCHERS, BANNER)).help() if 'help' of options
 
 parseArgs = ->
@@ -34,13 +39,6 @@ parseArgs = ->
 		return null
 	return options
 
-create = (paths) ->
-	for path in paths
-		if path[0] == on
-			fs.writeFileSync path[1], ''
-		else if path[0] == no
-			fs.mkdirSync path[1]
-	tavi.writeLine 'Tavi said: Your project has been successfully created!'
 usage = -> tavi.writeLine "Tavi said: Sorry, but I can't create your project: no params given. :(\n" + (new optparser.OptionParser(SWITCHERS, BANNER)).help()
 
 version = -> tavi.writeLine "Tavi said: My current version is v#{tavi.VERSION}"

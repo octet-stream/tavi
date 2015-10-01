@@ -24,6 +24,17 @@ Use these special symbols in your pattern for:
 * \+ - add something to current level
 * ^ - up to one level
 
+You can save your pattern:
+
+```bash
+	tavi -s patternName pattern
+```
+
+And create project with saved pattern:
+
+```bash
+	tavi patternName
+```
 
 ## Examples
 For this pattern

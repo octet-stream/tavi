@@ -2,7 +2,7 @@
 # ^ - на уровень вверх
 # + - на текущем уровне
 # Pattern example:
-# tavi foo/.bowerrc+.npmignore+.gitignore+coffee/main.coffee+extra.coffee^public/assets/css+js^img/browsers+errors+icns+layout^^stylus/common.styl+luna.styl^views/about.jade+error-page.jade+home.jade+layout.jade+pro.jade
+# tavi foo/gulpfile.coffee+.bowerrc+.npmignore+.gitignore+coffee/main.coffee+extra.coffee^public/assets/css+js^img/browsers+errors+icns+layout^^stylus/common.styl+luna.styl^views/about.jade+error-page.jade+home.jade+layout.jade+pro.jade
 
 path = require 'path'
 
