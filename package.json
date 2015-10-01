@@ -1,6 +1,6 @@
 {
   "name": "tavi",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Small utility for create projects :)",
   "keywords": [
     "node",
@@ -15,10 +15,10 @@
   "bin": {
     "tavi": "./bin/tavi"
   },
-  "bugs": "",
+  "bugs": "https://github.com/octet-stream/tavi/issues",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/octet-stream/tavi.git"
   },
   "scripts": {
     "test": "tavi test/.npmignore+gitignore+gulpfile.js"

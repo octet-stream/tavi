@@ -6,6 +6,7 @@ fs = require 'fs'
 
 SWITCHERS = [
 	['-h', '--help', 'Display this help message'],
+	['-v', '--version', 'Display current Tavi version'],
 	['-c', '--create', 'Create project with given pattern'],
 	# ['-t', '--tree', 'Show tree for given pattern'],
 	# ['-s', '--save', 'Add new pattern and save one to Tavi storage']
@@ -20,9 +21,10 @@ BANNER = '''
 
 exports.run = ->
 	options = do parseArgs
-	do usage if options == null
-	create parser.resolve options.create.toString() if 'create' of options
-	tavi.writeLine (new optparser.OptionParser(SWITCHERS, BANNER)).help() if 'help' of options
+	return do usage if options == null
+	return do version if 'version' of options
+	return create parser.resolve options.create.toString() if 'create' of options
+	return tavi.writeLine (new optparser.OptionParser(SWITCHERS, BANNER)).help() if 'help' of options
 
 parseArgs = ->
 	argv = process.argv[2..]
@@ -41,4 +43,4 @@ create = (paths) ->
 	tavi.writeLine 'Tavi said: Your project has been successfully created!'
 usage = -> tavi.writeLine "Tavi said: Sorry, but I can't create your project: no params given. :(\n" + (new optparser.OptionParser(SWITCHERS, BANNER)).help()
 
-version = -> tavi.writeLine "#{tavi.VERSION}"
+version = -> tavi.writeLine "Tavi said: My current version is v#{tavi.VERSION}"
